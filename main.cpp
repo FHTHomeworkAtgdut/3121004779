@@ -29,13 +29,23 @@ vector<vector<int>> wordSimilarity;
 vector<vector<double>> score;
 vector<string> str1, str2;
 
-int origStcNum = 0;
+// 句子总数
+int origStcNum = 0;  
 int orig_addStcNum = 0;
 
+//算出的每句相同单词总值
+int sum = 0;
 
 void origFile2Sentence(string filePath){
     ifstream file;
     file.open(filePath.data());
+
+    if(file.fail()){
+        string error = "Unable to open " + filePath;
+		throw invalid_argument(error);
+    }
+
+
     string tempStc;
     Sentence temp;
     char cur;
@@ -74,7 +84,12 @@ void orig_addFile2SentenceAndCheck(string filePath)    // 读取text文本的内
 {
     ifstream file; 
     file.open( filePath.data() );   //将文件流对象与文件连接起来 
- 
+    
+    if(file.fail()){
+        string error = "Unable to open " + filePath;
+		throw invalid_argument(error);
+    }
+
     string tempStc;
     Sentence temp;  // 读取的当前句子
     char cur;
@@ -119,20 +134,21 @@ void orig_addFile2SentenceAndCheck(string filePath)    // 读取text文本的内
 					}
 				}
 				
-				for(int i=0; i<temp.num; i++){  
+				for(int i=0; i<temp.num;i++){  
 					score[i][0] = max(score[i-1][0]-0.5, wordSimilarity[i][0]-0.5*(i-1) );
 				} 
 
-				for(int i=0; i<origSentence[i].num; i++){  
+				for(int i=0; i<origSentence[i].num;i++){  
 					score[0][i] = max(score[0][i-1]-0.5, wordSimilarity[0][i]-0.5*(i-1) );
 				}
+
 				for(int i=1;i<temp.num;i++){
 					for(int j=1;j<origSentence[i].num;j++){
 						score[i][j] = max( score[i-1][j]-0.5, score[i][j-1]-0.5, score[i-1][j-1]+wordSimilarity[i][j] );
 					}
 				}
- 
-				int sum = score[temp.num-1][origSentence[i].num-1];
+
+				sum = score[temp.num-1][origSentence[i].num-1];  
 				
 				if(save[orig_addStcNum].sameWordNum < sum){
 					save[orig_addStcNum].origSentence = origSentence[i].sentence;
@@ -142,7 +158,7 @@ void orig_addFile2SentenceAndCheck(string filePath)    // 读取text文本的内
 				}
 			}
 			orig_addStcNum++;   //test文件的句子的个数
- 
+
 		}else{
 			if( tempStc=="" ){
 				continue;
@@ -156,7 +172,24 @@ void orig_addFile2SentenceAndCheck(string filePath)    // 读取text文本的内
     file.close();             //关闭文件输入流 
 }
 
-int main(){
-    string orig_file, orig_add_file;
+int main(int argc, char *argv[]){
+    string origFile = argv[1], orig_addFile = argv[2];
+    
+	try{
+        origFile2Sentence(origFile);
+        orig_addFile2SentenceAndCheck(orig_addFile);
+    }
+	catch(const exception& e){
+		cerr << e.what() << endl;
+	}
+
+    for(int j=0; j<orig_addStcNum; j++ ){
+		cout<<"第"<<j+1<<"句对比"<<endl;
+		cout<<save[j].orig_addSentence<<endl;
+		cout<<save[j].origSentence<<endl;
+		cout<<save[j].sameWordNum<<"\t"<<save[j].orig_addNum<<endl;
+		cout<<"\n"<<endl;
+	}
+
     return 0;
 }
