@@ -1,4 +1,4 @@
-# 31210|0|4779
+# 3121004779
 软工作业2
 | PSP2.1 |Personal Software Process Stages|	预估耗时（分钟）|实际耗时（分钟）|
 |--------|:------------------------------:|--------------:|---------------|
@@ -12,10 +12,10 @@
 | Design	| 具体设计	|60|	180|
 | Coding	| 具体编码	|100|	360|
 | Code Review	| 代码复审	|60|	50|
-| Test	| 测试（自我测试，修改代码，提交修改）	|180|	300|
+| Test	| 测试（自我测试，修改代码，提交修改）	|120|	300|
 | Reporting	|报告|	30|	105|
-| Test Repor	| 测试报告|	60|	60|
-| Size Measurement	| 计算工作量	|20|	15|
-| Postmortem & Process Improvement Plan	| 事后总结, 并提出过程改进计划|	30|	30|
-| 合计	||1440|	1655|
+| Test Repor	| 测试报告|	30|	60|
+| Size Measurement	| 计算工作量	|10|	15|
+| Postmortem & Process Improvement Plan	| 事后总结, 并提出过程改进计划|	10|	30|
+| 合计	||1255|	1655|
 
