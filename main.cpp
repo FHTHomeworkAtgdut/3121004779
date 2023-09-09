@@ -150,12 +150,7 @@ void orig_addFile2SentenceAndCheck(string filePath)    // 读取text文本的内
 
 				sum = score[temp.num-1][origSentence[i].num-1];  
 				
-				if(save[orig_addStcNum].sameWordNum < sum){
-					save[orig_addStcNum].origSentence = origSentence[i].sentence;
-					save[orig_addStcNum].sameWordNum = sum;
-					save[orig_addStcNum].orig_addNum = temp.num;
-					save[orig_addStcNum].orig_addSentence = temp.sentence;
-				}
+
 			}
 			orig_addStcNum++;   //test文件的句子的个数
 
@@ -183,13 +178,7 @@ int main(int argc, char *argv[]){
 		cerr << e.what() << endl;
 	}
 
-    for(int j=0; j<orig_addStcNum; j++ ){
-		cout<<"第"<<j+1<<"句对比"<<endl;
-		cout<<save[j].orig_addSentence<<endl;
-		cout<<save[j].origSentence<<endl;
-		cout<<save[j].sameWordNum<<"\t"<<save[j].orig_addNum<<endl;
-		cout<<"\n"<<endl;
-	}
+
 
     return 0;
 }
