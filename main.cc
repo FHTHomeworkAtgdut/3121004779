@@ -93,16 +93,16 @@ double func(string filePath1,string filePath2 ){
     cout<<"相似度："<<similarity;
 }
 
-// int main(int argc, char** argv) {
-//     // string str1 = getFileData("test/orig.txt");
-//     // string str2 = getFileData("test/orig_0.8_add.txt");
-//     string str1 = getFileData(argv[1]);
-//     string str2 = getFileData(argv[2]);
-//     vector<string> word1 = cutWord(str1);
-//     vector<string> word2 = cutWord(str2);
+int main(int argc, char** argv) {
+    // string str1 = getFileData("test/orig.txt");
+    // string str2 = getFileData("test/orig_0.8_add.txt");
+    string str1 = getFileData(argv[1]);
+    string str2 = getFileData(argv[2]);
+    vector<string> word1 = cutWord(str1);
+    vector<string> word2 = cutWord(str2);
 
 
-//   double similarity = Similarity_Cal(word1,word2);
-//     cout<<"相似度："<<similarity;
-//     return 0;
-// }
+  double similarity = Similarity_Cal(word1,word2);
+    cout<<"相似度："<<similarity;
+    return 0;
+}
