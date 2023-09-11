@@ -3,14 +3,18 @@
 
 本作业在ubuntu中完成
 项目使用方法：
+需要cppJieba库的编译，请自行去官方仓库查看编译方法；
 main.cc
+
 ```
 g++ main.cc -o main
 /.main 
 ```
+
 编译后可以直接运行
 
 单元测试：
+单元测试依赖cmake和gtest，已和代码文件放在一起
 
 ```
 cd build
@@ -19,6 +23,7 @@ make
 mv test ..
 ../test
 ```
+
 建议把make出的可执行程序放在项目根目录（和main.cc放在一起），然后可直接运行。
 
 
@@ -27,7 +32,7 @@ mv test ..
 1. mainbak.cpp 这个文件可以做到英文的查重（抄的，别在意）
 2. 有些文件是没用的，例如cppjieba-master，而且有些头文件被我复制了很多次，nevermind
 3. main_direct_run 可直接运行 main_cmd需带命令行参数
-4. 这种东西随便看看得了，我瞎写的成分居多，有错的话会改正的XD，能帮到您一点的话麻烦点个星orz
+4. 代码写的比较随便且粗糙，仅供参考，如果有用的话star一下orz
 
 
 
