@@ -90,7 +90,8 @@ double func(string filePath1,string filePath2 ){
 
 
   double similarity = Similarity_Cal(word1,word2);
-    cout<<"相似度："<<similarity;
+    // cout<<"相似度："<<similarity;
+  return similarity;
 }
 
 int main(int argc, char** argv) {
